@@ -1,9 +1,5 @@
 
-
-
 // DEPENDENCIES
-
-
 const express = require('express')
 const router = express.Router()
 const hikeCtrl = require('../controllers/hike-controller')
@@ -20,18 +16,13 @@ router.get("/", hikeCtrl.index);
 router.post("/", hikeCtrl.create)
 
 //HIKE DETAILS SHOW ROUTE
-router.get("/:id", hikeCtrl.show);
+router.get("/:id", hikeCtrl.getOne);
 
-//HIKE DELETE ROUTE
-router.delete("/:id", (req, res, next) => {
-	res.status(200).json({message: "HIKE destroy route", resource: req.params.id})
-});
+//HIKE DESTROY ROUTE
+router.delete("/:id", hikeCtrl.delete);
 
 //HIKE UPDATE ROUTE
-router.put("/:id", (req, res, next) => {
-    console.log(req.body)
-	res.status(200).json({message: "HIKE update route", resource: req.params.id})
-});
+router.put("/:id", hikeCtrl.update);
 
 
 module.exports = router
