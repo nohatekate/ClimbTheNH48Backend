@@ -6,29 +6,23 @@
 
 const express = require('express')
 const router = express.Router()
+const hikeCtrl = require('../controllers/hike-controller')
 
 
 // ROUTES
 
 
 // HIKE INDEX ROUTE
-router.get("/", (req, res, next) => {
-	res.status(200).json({message: "HIKE index route"})
-});
+router.get("/", hikeCtrl.index);
 
 
 // HIKE CREATE ROUTE
-router.post("/", (req, res, next) =>  {
-    console.log("test data", req.body)
-	res.status(201).json({message: "HIKE create route"})
-});
+router.post("/", hikeCtrl.create)
 
-//HIKE SHOW ROUTE
-router.get("/:id", (req, res, next) => {
-	res.status(200).json({message: "HIKE detail route", resource: req.params.id})
-});
+//HIKE DETAILS SHOW ROUTE
+router.get("/:id", hikeCtrl.show);
 
-//HIKE SHOW ROUTE
+//HIKE DELETE ROUTE
 router.delete("/:id", (req, res, next) => {
 	res.status(200).json({message: "HIKE destroy route", resource: req.params.id})
 });
