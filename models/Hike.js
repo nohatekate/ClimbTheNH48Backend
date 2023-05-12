@@ -6,11 +6,7 @@ const HikeSchema = new mongoose.Schema({
     comments: String,
     summit: Boolean, 
     image: String,
-    // owner: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User',
-    //     required: true
-    // }  
+    hiker: String
 }, {
     timestamps: true
 });
