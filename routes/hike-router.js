@@ -11,6 +11,8 @@ const hikeCtrl = require('../controllers/hike-controller')
 // HIKE INDEX ROUTE
 router.get("/", hikeCtrl.index);
 
+// GET USER MOUNTAIN HIKES
+router.get("/:mountain/:userid", hikeCtrl.getMountainHikes)
 
 // HIKE CREATE ROUTE
 router.post("/", hikeCtrl.create)
