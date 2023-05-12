@@ -1,6 +1,6 @@
 const express = require('express')
 const { Hike } = require('../models')
-console.log(Hike)
+// console.log(Hike)
 
 // CONTROLLERS
 
@@ -8,7 +8,7 @@ console.log(Hike)
 // Hike INDEX ACTION
 async function index(req, res, next) {
     try {
-        res.json(await Hike.find({/* this is where I can pss in paramaters possibly to only show people for a specific user???*/}));
+        res.json(await Hike.find({/* this is where I can pss in paramaters possibly to only show hikes for a specific user???*/ }));
     } catch (error) {
         res.status(400).json(error);
     }
@@ -51,12 +51,21 @@ async function destroy(req, res, next) {
 async function update(req, res, next) {
     try {
         // send one hike
-        res.json(await Hike.findByIdAndUpdate(req.params.id, req.body, {new:true}));
+        res.json(await Hike.findByIdAndUpdate(req.params.id, req.body, { new: true }));
     } catch (error) {
         //send error
         res.status(400).json(error);
     }
 };
+
+async function getMountainHikes(req, res, next) {
+    try {
+        console.log("params", req.params)
+        res.json(await Hike.find({ mountain: req.params.mountain, hiker:req.params.userid }));
+    } catch (error) {
+        res.status(400).json(error)
+    }
+}
 
 // EXPORT Controller Action
 module.exports = {
@@ -64,5 +73,6 @@ module.exports = {
     create,
     getOne: detail,
     delete: destroy,
-    update
+    update,
+    getMountainHikes
 }
