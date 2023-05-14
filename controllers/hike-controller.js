@@ -1,6 +1,5 @@
 const express = require('express')
 const { Hike } = require('../models')
-// console.log(Hike)
 
 // CONTROLLERS
 
@@ -35,8 +34,6 @@ async function detail(req, res, next) {
     }
 };
 
-// ... the remaining Hike controller actions will go below 
-
 // Hike DESTROY ACTION 
 async function destroy(req, res, next) {
     try {
@@ -60,9 +57,18 @@ async function update(req, res, next) {
 
 async function getMountainHikes(req, res, next) {
     try {
-        console.log("params", req.params)
+        
         res.json(await Hike.find({ mountain: req.params.mountain, hiker:req.params.userid }));
     } catch (error) {
+        res.status(400).json(error)
+    }
+}
+
+async function getUserHikes(req, res, next){
+    try{
+        // console.log("params", req.params)
+        res.json(await Hike.find({hiker:req.params.userid}))
+    }catch(err){
         res.status(400).json(error)
     }
 }
@@ -74,5 +80,6 @@ module.exports = {
     getOne: detail,
     delete: destroy,
     update,
-    getMountainHikes
+    getMountainHikes,
+    getUserHikes
 }
