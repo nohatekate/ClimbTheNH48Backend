@@ -14,11 +14,12 @@ router.get("/", hikeCtrl.index);
 // GET USER MOUNTAIN HIKES
 router.get("/:mountain/:userid", hikeCtrl.getMountainHikes)
 
-// HIKE CREATE ROUTE
-router.post("/", hikeCtrl.create)
 
 //HIKE DETAILS SHOW ROUTE
 router.get("/:id", hikeCtrl.getOne);
+
+// HIKE CREATE ROUTE
+router.post("/", hikeCtrl.create)
 
 //HIKE DESTROY ROUTE
 router.delete("/:id", hikeCtrl.delete);
