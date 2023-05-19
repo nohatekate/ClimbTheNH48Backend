@@ -6,7 +6,8 @@ const HikeSchema = new mongoose.Schema({
     comments: String,
     summit: Boolean, 
     image: String,
-    hiker: String
+    hiker: String,
+    urlName: String
 }, {
     timestamps: true
 });

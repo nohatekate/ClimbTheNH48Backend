@@ -58,8 +58,8 @@ async function update(req, res, next) {
 
 async function getMountainHikes(req, res, next) {
     try {
-        res.json(await Hike.find({ mountain: req.params.mountain, hiker: req.params.userid }));
-
+        res.json(await Hike.find({ urlName: req.params.mountain, hiker: req.params.userid }));
+        // console.log(mountain)
     } catch (error) {
         res.status(400).json(error)
     }
